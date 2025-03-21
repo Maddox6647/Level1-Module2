@@ -7,32 +7,36 @@ Create the classic Flappy Bird game!
 def setup():
     pass
     # 1. Use the size function to set the width and height of the program
-    
+    size(800, 800)
     # 2. Remove the comment (the '#') in the line below 
-    #global bg, bird, lower_pipe, upper_pipe
+    global bg, bird, lower_pipe, upper_pipe
     
-    # 3. Use the loadImage function to inialize the bg variable with the
+    # 3. Use the loadImage function to initialize the bg variable with the
     # flappyBackground.jpg image 
-    
+    bg = loadImage("flappyBackground.jpg")
     # 4. Resize the background to the width and height of the program
-    
+    bg.resize(800, 800)
     # 5. Use the Bird class defined below to create a Bird object.
     # The bird image is named 'bird.png'
+    bird = Bird("bird.png", 30, 30)
     
     # 6. Use the Pipe class defined below to create 2 Pipe objects,
     # one pipe at the top and one at the bottom.
     # The pipe images are named, "topPipe.png" and "bottomPipe.png"  
-
+    upper_pipe = Pipe("topPipe.png")
+    lower_pipe = Pipe("bottomPipe.png")
+    
+    
     # 7. Call the reset_pipes function to set the initial positions
     # of the pipes
-
+    reset_pipes(lower_pipe, upper_pipe)
 def draw():
     pass
     # 8. Remove the comment (the '#') in the line below
-    #global bg, bird, lower_pipe, upper_pipe
+    global bg, bird, lower_pipe, upper_pipe
     
     # 9. Use the background function to draw the game's background
-
+    background(bg)
     # 10. Find the Bird class below and follow the instructions
     # there to complete the Bird class before continuing
 
