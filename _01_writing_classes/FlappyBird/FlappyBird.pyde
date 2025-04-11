@@ -42,7 +42,8 @@ def draw():
 
     # 18. Call the bird's update and draw methods.
     # Is the bird displayed and move up when the mouse is clicked?
-    
+    bird.update()
+    bird.draw()
     # 19. Call the upper and lower pipe's update methods.
     
     # 20. Call the upper and lower pipe's draw methods. 
@@ -67,28 +68,33 @@ class Bird:
         self.height = ( 3 * self.width ) / 4
         self.image = loadImage(image_file)
         self.image.resize(self.width, self.height)
+        self.yVelocity = -10
         
         # 11. Initialize a member variable for gravity (typically 1 to 5)
-        
+        self.gravity = 1
         # 12. Add a member variable for the distance the bird travels
         # upward when it flaps (jumps)
-        
+        self.distance = 10
     # 13. Create an update method that will update the bird's position
     # while the game runs
-
+    def update(self):
+        self.yVelocity += self.gravity
+        self.y  += self.yVelocity
         # 14. Move the bird downward by the gravity member variable to make
         # it look like the bird is falling
         
         # 15. Use the boolean mousePressed variable to flap (jump) the bird
         # up by flap distance member variable the when the mouse is pressed
-    
+        if mousePressed:
+            #self.y -= self.distance
+            self.yVelocity = -10
+            
     # 16. Create a draw method that shows the bird on the program
-
+    def draw(self):
         # 17. Use the image function and the class's member variables to
         # draw the bird
         # image( <image>, <x positon>, <y position> )
-        
-
+        image(self.image, self.x, self.y)
 class Pipe:
     pipe_gap = 125
     
