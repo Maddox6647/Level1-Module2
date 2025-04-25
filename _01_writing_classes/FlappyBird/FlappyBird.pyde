@@ -45,17 +45,21 @@ def draw():
     bird.update()
     bird.draw()
     # 19. Call the upper and lower pipe's update methods.
-    
+    upper_pipe.update()
+    lower_pipe.update()
     # 20. Call the upper and lower pipe's draw methods. 
     # Do the pipes move across the screen?
-
+    upper_pipe.draw()
+    lower_pipe.draw()
     # 21. Call the reset_pipes function defined below when the pipes
     # move past the screen to reset their position. 
-
+    if upper_pipe.x <=  -upper_pipe.width:
+        reset_pipes(upper_pipe, lower_pipe)
     # 22. Call the intersects_pipes function defined below to check if
     # the bird collided with one of the pipes. If there's a collision,
     # stop the game by calling noLoop()  
-    
+    if intersects_pipes(bird, lower_pipe, upper_pipe) == True:
+        noLoop()
     # 23. End the game if the bird flies too low (hitting the ground)
     # OR flies too high (above the screen)
     
@@ -64,7 +68,7 @@ class Bird:
     def __init__(self, image_file, bird_x, bird_y):
         self.x = bird_x
         self.y = bird_y
-        self.width = 50
+        self.width = 300
         self.height = ( 3 * self.width ) / 4
         self.image = loadImage(image_file)
         self.image.resize(self.width, self.height)
@@ -96,12 +100,12 @@ class Bird:
         # image( <image>, <x positon>, <y position> )
         image(self.image, self.x, self.y)
 class Pipe:
-    pipe_gap = 125
+    pipe_gap = 470
     
     def __init__(self, image_file, pipe_y=0, pipe_height=0):
         self.x = width
         self.y = pipe_y
-        self.width = 50
+        self.width = 200
         self.height = pipe_height
         self.image = loadImage(image_file)
         self.image.resize(self.width, self.height)
