@@ -62,13 +62,14 @@ def draw():
         noLoop()
     # 23. End the game if the bird flies too low (hitting the ground)
     # OR flies too high (above the screen)
-    
+    if bird <= 6:
+        noLoop()
 
 class Bird:
     def __init__(self, image_file, bird_x, bird_y):
         self.x = bird_x
         self.y = bird_y
-        self.width = 300
+        self.width = 30
         self.height = ( 3 * self.width ) / 4
         self.image = loadImage(image_file)
         self.image.resize(self.width, self.height)
@@ -100,18 +101,18 @@ class Bird:
         # image( <image>, <x positon>, <y position> )
         image(self.image, self.x, self.y)
 class Pipe:
-    pipe_gap = 470
+    pipe_gap = 180
     
     def __init__(self, image_file, pipe_y=0, pipe_height=0):
         self.x = width
         self.y = pipe_y
-        self.width = 200
+        self.width = 799
         self.height = pipe_height
         self.image = loadImage(image_file)
         self.image.resize(self.width, self.height)
     
     def update(self):
-        self.x -= 3
+        self.x -= 13
     
     def draw(self):
         image(self.image, self.x, self.y)
