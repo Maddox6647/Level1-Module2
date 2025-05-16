@@ -18,7 +18,7 @@ def setup():
     bg.resize(800, 800)
     # 5. Use the Bird class defined below to create a Bird object.
     # The bird image is named 'bird.png'
-    bird = Bird("bird.png", 30, 30)
+    bird = Bird("bird.png", 30, 200)
     
     # 6. Use the Pipe class defined below to create 2 Pipe objects,
     # one pipe at the top and one at the bottom.
@@ -62,14 +62,16 @@ def draw():
         noLoop()
     # 23. End the game if the bird flies too low (hitting the ground)
     # OR flies too high (above the screen)
-    if bird <= 6:
+    if bird.y >= 800:
+        noLoop()
+    if bird.y <= 0:
         noLoop()
 
 class Bird:
     def __init__(self, image_file, bird_x, bird_y):
         self.x = bird_x
         self.y = bird_y
-        self.width = 30
+        self.width = 300
         self.height = ( 3 * self.width ) / 4
         self.image = loadImage(image_file)
         self.image.resize(self.width, self.height)
@@ -101,18 +103,18 @@ class Bird:
         # image( <image>, <x positon>, <y position> )
         image(self.image, self.x, self.y)
 class Pipe:
-    pipe_gap = 180
+    pipe_gap = 500
     
     def __init__(self, image_file, pipe_y=0, pipe_height=0):
         self.x = width
         self.y = pipe_y
-        self.width = 799
+        self.width = 1000
         self.height = pipe_height
         self.image = loadImage(image_file)
         self.image.resize(self.width, self.height)
     
     def update(self):
-        self.x -= 13
+        self.x -= 8
     
     def draw(self):
         image(self.image, self.x, self.y)
