@@ -9,8 +9,8 @@ def setup():
     # 1. Use the size function to set the width and height of the program
     size(800, 800)
     # 2. Remove the comment (the '#') in the line below 
-    global bg, bird, lower_pipe, upper_pipe
-    
+    global bg, bird, lower_pipe, upper_pipe, score
+    score = 0
     # 3. Use the loadImage function to initialize the bg variable with the
     # flappyBackground.jpg image 
     bg = loadImage("flappyBackground.jpg")
@@ -33,7 +33,7 @@ def setup():
 def draw():
     pass
     # 8. Remove the comment (the '#') in the line below
-    global bg, bird, lower_pipe, upper_pipe
+    global bg, bird, lower_pipe, upper_pipe, score
     
     # 9. Use the background function to draw the game's background
     background(bg)
@@ -55,6 +55,7 @@ def draw():
     # move past the screen to reset their position. 
     if upper_pipe.x <=  -upper_pipe.width:
         reset_pipes(upper_pipe, lower_pipe)
+        score += 1
     # 22. Call the intersects_pipes function defined below to check if
     # the bird collided with one of the pipes. If there's a collision,
     # stop the game by calling noLoop()  
@@ -62,16 +63,22 @@ def draw():
         noLoop()
     # 23. End the game if the bird flies too low (hitting the ground)
     # OR flies too high (above the screen)
+    
     if bird.y >= 800:
         noLoop()
     if bird.y <= 0:
         noLoop()
 
+    textSize(32)
+    text("score: " + str(score), 10, 30)
+    fill(0, 0, 0)
+    
+    
 class Bird:
     def __init__(self, image_file, bird_x, bird_y):
         self.x = bird_x
         self.y = bird_y
-        self.width = 300
+        self.width = 90
         self.height = ( 3 * self.width ) / 4
         self.image = loadImage(image_file)
         self.image.resize(self.width, self.height)
@@ -103,12 +110,12 @@ class Bird:
         # image( <image>, <x positon>, <y position> )
         image(self.image, self.x, self.y)
 class Pipe:
-    pipe_gap = 500
+    pipe_gap = 209
     
     def __init__(self, image_file, pipe_y=0, pipe_height=0):
         self.x = width
         self.y = pipe_y
-        self.width = 1000
+        self.width = 100
         self.height = pipe_height
         self.image = loadImage(image_file)
         self.image.resize(self.width, self.height)
