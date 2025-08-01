@@ -11,7 +11,7 @@ def create_image(filename, width, height):
 
     try:
         image = Image.open(filename)
-        image = image.resize((width, height), Image.ANTIALIAS)
+        image = image.resize((width, height), Image.LANCZOS)
         image_obj = ImageTk.PhotoImage(image=image)
     except FileNotFoundError as fnf:
         print("ERROR: Unable to find file " + filename)
@@ -23,7 +23,7 @@ def create_image(filename, width, height):
 # TODO 0) Find at least 3 interesting photos
 """
 These are the photos:
-EX5MfJfXgAE65jh.jpg, sddefault.jpg, amogus_png_by_franchumar_dhqwcjm-fullview.png
+EX5MfJfXgAE65jh.jpg, sddefault.jpg, sad.jpeg
 """
 # TODO 1) Create a new tkinter class
 class PhotoQuiz(tk.Tk):
@@ -46,6 +46,7 @@ if __name__ == '__main__':
     score = 0
     # TODO 9) Create an image object variable using the create_image function
     #  above and store it in a variable
+
     bobby = create_image("EX5MfJfXgAE65jh.jpg", 400, 400)
     # TODO 10) Set the image onto the class's label using the configure method,
     #  for example:
@@ -59,7 +60,7 @@ if __name__ == '__main__':
     if boblikesmen and boblikesmen.lower() == "shrek wazowski":
         score += 1
     else:
-        messagebox.showinfo("sfhdsh", "bro cmon u dickhead that was soooo easy")
+        messagebox.showinfo("sfhdsh", "Now how'd you end up here?")
     # TODO 13) Repeat the steps to show a different photo and ask a different
     #  question
     shreklikesmen = create_image("sddefault.jpg", 400, 400)
@@ -70,8 +71,8 @@ if __name__ == '__main__':
     if answer2 and answer2.lower() == "mogus":
         score += 1
     else:
-        messagebox.showinfo("sfhdsh", "bruh, u dummy have you not watched amogus on youtube, u stupid nerd")
-    williambeckwith = create_image("amogus_png_by_franchumar_dhqwcjm-fullview.png", 400, 400)
+        messagebox.showinfo("sfhdsh", "sad")
+    williambeckwith = create_image("sad.jpg", 400, 400)
     shrek.photo_label.configure(image=williambeckwith)
     shrek.photo_label.image = williambeckwith
     shrek.update()
@@ -79,7 +80,7 @@ if __name__ == '__main__':
     if answer3 and answer3.lower() == "amogus":
         score += 1
     else:
-        messagebox.showinfo("sfhdsh", "nah nah nah nah i wanna break up nah nah nah nah")
+        messagebox.showinfo("sfhdsh", "womp womp")
     # TODO 14) Display the score to the user after asking the last question
 messagebox.showinfo("Score", "You got " + str(score) + " out of 3!")
 
