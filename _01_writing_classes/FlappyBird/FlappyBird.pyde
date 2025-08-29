@@ -1,7 +1,7 @@
 """
 Create the classic Flappy Bird game!
 """
-
+ 
 # 0. Do the other exercises in this folder before starting this one!
 
 def setup():
