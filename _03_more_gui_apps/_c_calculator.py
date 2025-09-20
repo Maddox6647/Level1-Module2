@@ -14,7 +14,7 @@ class ButtonsAndTextFields(tk.Tk):
         super().__init__()
 
         # Add a label
-        self.label = tk.Label(self, bg='gray', text='', font=('arial', 50, 'normal'))
+        self.label = tk.Label(self, bg='gray', text='maddox calculator', font=('arial', 50, 'normal'))
         self.label.place(relx=0.1, rely=0.1, relwidth=0.8, relheight=0.4)
 
 

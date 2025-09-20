@@ -9,7 +9,7 @@ def setup():
     # 1. Use the size function to set the width and height of the program
     size(800, 800)
     # 2. Remove the comment (the '#') in the line below 
-    global bg, bird, lower_pipe, upper_pipe, score
+    global bg, bird, upper_pipe, lower_pipe, score
     score = 0
     # 3. Use the loadImage function to initialize the bg variable with the
     # flappyBackground.jpg image 
@@ -29,11 +29,11 @@ def setup():
     
     # 7. Call the reset_pipes function to set the initial positions
     # of the pipes
-    reset_pipes(lower_pipe, upper_pipe)
+    reset_pipes(upper_pipe, lower_pipe)
 def draw():
     pass
     # 8. Remove the comment (the '#') in the line below
-    global bg, bird, lower_pipe, upper_pipe, score
+    global bg, bird, upper_pipe, lower_pipe, score
     
     # 9. Use the background function to draw the game's background
     background(bg)
@@ -55,7 +55,7 @@ def draw():
     # move past the screen to reset their position. 
     if upper_pipe.x <=  -upper_pipe.width:
         reset_pipes(upper_pipe, lower_pipe)
-        score += 1
+        score += 10000
     # 22. Call the intersects_pipes function defined below to check if
     # the bird collided with one of the pipes. If there's a collision,
     # stop the game by calling noLoop()  
@@ -78,7 +78,7 @@ class Bird:
     def __init__(self, image_file, bird_x, bird_y):
         self.x = bird_x
         self.y = bird_y
-        self.width = 90
+        self.width = 50
         self.height = ( 3 * self.width ) / 4
         self.image = loadImage(image_file)
         self.image.resize(self.width, self.height)
@@ -110,18 +110,18 @@ class Bird:
         # image( <image>, <x positon>, <y position> )
         image(self.image, self.x, self.y)
 class Pipe:
-    pipe_gap = 209
+    pipe_gap = 230
     
     def __init__(self, image_file, pipe_y=0, pipe_height=0):
         self.x = width
         self.y = pipe_y
-        self.width = 100
+        self.width = 500
         self.height = pipe_height
         self.image = loadImage(image_file)
         self.image.resize(self.width, self.height)
     
     def update(self):
-        self.x -= 8
+        self.x -= 12
     
     def draw(self):
         image(self.image, self.x, self.y)
@@ -133,13 +133,13 @@ class Pipe:
         self.image.resize(self.width, self.height)
         
 
-def reset_pipes(lower_pipe, upper_pipe):
+def reset_pipes(upper_pipe, lower_pipe):
     random_height = int((2 * random(height) / 3) + 50)
     upper_pipe.teleport(0, random_height)
     lower_pipe.teleport(random_height + Pipe.pipe_gap, height - random_height)
     
     
-def intersects_pipes(bird, lower_pipe, upper_pipe):
+def intersects_pipes(bird, upper_pipe, lower_pipe):
     # Check upper pipe collision
     if (bird.x + bird.width >= upper_pipe.x and
         bird.x <= upper_pipe.x + upper_pipe.width and
