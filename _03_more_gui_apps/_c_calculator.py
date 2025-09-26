@@ -114,6 +114,7 @@ class ButtonsAndTextFields(tk.Tk):
 
     def on_button1_press(self):
         print("I pressed button 1")
+        self.text_field.set
 
     def on_button2_press(self):
         print("I pressed button 2")
