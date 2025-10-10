@@ -39,8 +39,8 @@ class ButtonsAndTextFields(tk.Tk):
         self.text_field = tk.Entry(self)
         self.text_field.place(relx=0.1, rely=0.8, width=80, height=30)
 
-        self.text_field = tk.Entry(self)
-        self.text_field.place(relx=0.6, rely=0.8, width=80, height=30)
+        self.text_field2 = tk.Entry(self)
+        self.text_field2.place(relx=0.6, rely=0.8, width=80, height=30)
 
 
 
@@ -72,22 +72,45 @@ class ButtonsAndTextFields(tk.Tk):
         # Get the text from the text field and store into a variable
         text_in_text_field = self.text_field.get()
 
-        # Update the text in the label
-        self.label.configure(text=text_in_text_field)
+        text_in_text_field2 = self.text_field2.get()
 
-        messagebox.showinfo(None, 'sorry the calc is still a work in progress')
+        # Update the text in the label
+        self.label.configure(text=text_in_text_field+text_in_text_field2)
+
+
+
+
+
 
     def on_buttonadd_press(self):
-        print("I pressed button 1")
+
+        text_in_text_field = float(self.text_field.get())
+        print(text_in_text_field)
+        text_in_text_field2 = float(self.text_field2.get())
+
+        # Update the text in the label
+        self.label.configure(text=text_in_text_field+text_in_text_field2)
+
+
 
     def on_buttonsubtract_press(self):
-        print("I pressed button 2")
+        text_in_text_field = float(self.text_field.get())
+
+        text_in_text_field2 = float(self.text_field2.get())
+
+        self.label.configure(text=text_in_text_field-text_in_text_field2)
 
     def on_buttonmultiply_press(self):
-        print("I pressed button 2")
+        text_in_text_field = float(self.text_field.get())
+
+        text_in_text_field2 = float(self.text_field2.get())
+        self.label.configure(text=text_in_text_field*text_in_text_field2)
 
     def on_buttondivide_press(self):
-        print("I pressed button 2")
+        text_in_text_field = float(self.text_field.get())
+
+        text_in_text_field2 = float(self.text_field2.get())
+        self.label.configure(text=text_in_text_field/text_in_text_field2)
 
 
 
@@ -100,9 +123,9 @@ class ButtonsAndTextFields(tk.Tk):
         print('  keysym ...: ' + str(event.keysym))
 
     def on_button_release(self, event):
-
-        print(repr(event))
-        print('  num ...: ' + str(event.num) + ' (button number)')
+        pass
+        #print(repr(event))
+        #print('  num ...: ' + str(event.num) + ' (button number)')
 
 
 
