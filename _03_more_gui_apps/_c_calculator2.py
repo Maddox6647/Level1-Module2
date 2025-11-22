@@ -14,20 +14,20 @@ class ButtonsAndTextFields(tk.Tk):
         super().__init__()
 
         # Add a label
-        self.label = tk.Label(self, bg='gray', text='maddox calculator', font=('arial', 50, 'normal'))
+        self.label = tk.Label(self, bg='gray', text='maddox calculator', font=('times new roman', 50, 'bold'))
         self.label.place(relx=0.1, rely=0.1, relwidth=0.8, relheight=0.4)
 
 
-        self.buttonadd = tk.Button(self, text='add', fg='black', font=('arial', 16, 'bold'), command=self.on_buttonadd_press)
+        self.buttonadd = tk.Button(self, text='add', fg='black', font=('times new roman', 16, 'bold'), command=self.on_buttonadd_press)
         self.buttonadd.place(relx=0.1, rely=0.5, relwidth=0.1, relheight=0.1)
 
-        self.buttonsubtract = tk.Button(self, text='subtract', fg='black', font=('arial', 16, 'bold'), command=self.on_buttonsubtract_press)
+        self.buttonsubtract = tk.Button(self, text='subtract', fg='black', font=('times new roman', 16, 'bold'), command=self.on_buttonsubtract_press)
         self.buttonsubtract.place(relx=0.325, rely=0.5, relwidth=0.1, relheight=0.1)
 
-        self.buttonmultiply = tk.Button(self, text='multiply', fg='black', font=('arial', 16, 'bold'), command=self.on_buttonmultiply_press)
+        self.buttonmultiply = tk.Button(self, text='multiply', fg='black', font=('times new roman', 16, 'bold'), command=self.on_buttonmultiply_press)
         self.buttonmultiply.place(relx=0.55, rely=0.5, relwidth=0.1, relheight=0.1)
 
-        self.buttondivide = tk.Button(self, text='divide', fg='black', font=('arial', 16, 'bold'), command=self.on_buttondivide_press)
+        self.buttondivide = tk.Button(self, text='divide', fg='black', font=('times new roman', 16, 'bold'), command=self.on_buttondivide_press)
         self.buttondivide.place(relx=0.790, rely=0.5, relwidth=0.1, relheight=0.1)
 
 
