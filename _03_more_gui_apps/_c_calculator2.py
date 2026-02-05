@@ -17,6 +17,62 @@ class ButtonsAndTextFields(tk.Tk):
         self.label = tk.Label(self, bg='gray', text='maddox calculator', font=('times new roman', 50, 'bold'))
         self.label.place(relx=0.1, rely=0.1, relwidth=0.8, relheight=0.4)
 
+        super().__init__()
+
+        # Add a label
+        self.label = tk.Label(self, bg='gray', text='maddox calculator', font=('times new roman', 50, 'bold'))
+        self.label.place(relx=0.1, rely=0.1, relwidth=0.8, relheight=0.4)
+
+
+        self.buttonadd = tk.Button(self, text='add', fg='black', font=('times new roman', 16, 'bold'), command=self.on_buttonadd_press)
+        self.buttonadd.place(relx=0.1, rely=0.5, relwidth=0.1, relheight=0.1)
+
+        self.buttonsubtract = tk.Button(self, text='subtract', fg='black', font=('times new roman', 16, 'bold'), command=self.on_buttonsubtract_press)
+        self.buttonsubtract.place(relx=0.325, rely=0.5, relwidth=0.1, relheight=0.1)
+
+        self.buttonmultiply = tk.Button(self, text='multiply', fg='black', font=('times new roman', 16, 'bold'), command=self.on_buttonmultiply_press)
+        self.buttonmultiply.place(relx=0.55, rely=0.5, relwidth=0.1, relheight=0.1)
+
+        self.buttondivide = tk.Button(self, text='divide', fg='black', font=('times new roman', 16, 'bold'), command=self.on_buttondivide_press)
+        self.buttondivide.place(relx=0.790, rely=0.5, relwidth=0.1, relheight=0.1)
+
+
+
+
+
+
+        # Add a text field that can take input from the user
+        self.text_field = tk.Entry(self)
+        self.text_field.place(relx=0.1, rely=0.8, width=80, height=30)
+
+        self.text_field2 = tk.Entry(self)
+        self.text_field2.place(relx=0.6, rely=0.8, width=80, height=30)
+
+
+
+
+        # bind(event, handler) says to call the handler (function or method)
+        # when an event occurs. The events are predefined by tkinter.
+        # common events: https://www.tcl.tk/man/tcl8.6/TkCmd/bind.htm#M7
+        #   <KeyPress>      - a keyboard key is pressed
+        #   <KeyRelease>    - a keyboard key is released
+        #   <ButtonPress>   - a mouse button is pressed
+        #   <ButtonRelease> - a mouse button is released
+        #   <Enter>         - the mouse has entered the object
+        #   <Leave>         - the mouse has left the object
+        #   <Motion>        - the mouse has moved within the object
+        self.text_field.bind('<KeyPress>', self.on_text_entry)
+
+        # bind() can also be used in conjunction with the command= option
+        self.buttonadd.bind('<ButtonRelease>', self.on_button_release)
+        self.buttonsubtract.bind('<ButtonRelease>', self.on_button_release)
+        self.buttonmultiply.bind('<ButtonRelease>', self.on_button_release)
+        self.buttondivide.bind('<ButtonRelease>', self.on_button_release)
+
+        # bind() used to change background of the label as the mouse enters
+        # and leaves the label object
+        self.label.bind('<Enter>', self.mouse_enter_label)
+        self.label.bind('<Leave>', self.mouse_leave_label)
 
         self.buttonadd = tk.Button(self, text='add', fg='black', font=('times new roman', 16, 'bold'), command=self.on_buttonadd_press)
         self.buttonadd.place(relx=0.1, rely=0.5, relwidth=0.1, relheight=0.1)

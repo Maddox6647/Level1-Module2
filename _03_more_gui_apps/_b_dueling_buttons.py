@@ -48,8 +48,8 @@ if __name__ == '__main__':
     bobby = DuelingButtons()
 
     # TODO 9) Create an object of the dueling buttons class
-    bobby.title('DuelingButtons')
+    bobby.title('dueling buttons')
     # TODO 10) Set the object's width and size using the geometry method
-    bobby.geometry('300x300')
+    bobby.geometry('900x900')
     # TODO 11) Call the object's mainloop method
     bobby.mainloop()
